@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página Incrível</title>
+    <style>
+        /* Um toque de CSS para não ficar com cara de anos 90 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+        }
+        .container-img {
+            text-align: center;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bem-vindo ao Meu Site</h1>
+    </header>
+
+    <main>
+        <h2>O que vamos construir hoje?</h2>
+        <p>Este é um exemplo básico de como o HTML organiza a estrutura de uma página na web.</p>
+        
+        
+
+        <h3>Principais tags utilizadas:</h3>
+        <ul>
+            <li><strong>header:</strong> O topo da página.</li>
+            <li><strong>main:</strong> Onde fica o conteúdo principal.</li>
+            <li><strong>ul e li:</strong> Para criar listas como esta.</li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Criado com a ajuda do Gemini</p>
+    </footer>
+
+</body>
+</html>
