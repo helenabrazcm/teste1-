@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <title>Olá Mundo Estilizado</title>
  <style>
+    /* O CSS começa aqui */
     body {
-        /* Substitua a URL abaixo por uma imagem de sua preferência */
-        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                          url('https://images.alphacoders.com/131/1312384.jpeg');
+        /* Gradiente de segurança (caso a imagem não carregue) + Link da Imagem */
+        background: linear-gradient(135deg, #b11313 0%, #2b3a8c 100%), 
+                    url('https://images.alphacoders.com/131/1312384.jpeg');
+        
+        /* Configurações para a imagem cobrir a tela toda */
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
+        background-repeat: no-repeat;
         
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: flex;
@@ -20,40 +24,57 @@
         margin: 0;
     }
 
+    /* Overlay para escurecer um pouco a imagem e dar destaque ao cartão */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Escurece 40% da imagem */
+        z-index: -1;
+    }
+
     .cartao {
-        background-color: rgba(255, 255, 255, 0.9); /* Branco com leve transparência */
-        backdrop-filter: blur(5px); /* Efeito de vidro embaçado */
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         text-align: center;
-        border-top: 5px solid #b11313; /* Vermelho do Aranha */
-        max-width: 300px;
+        border-top: 8px solid #b11313; /* Vermelho Aranha */
+        max-width: 350px;
+        z-index: 1;
     }
 
     h1 {
-        color: #b11313; /* Vermelho do uniforme */
+        color: #b11313;
         margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     p {
         color: #333;
-        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.5;
     }
 
     button {
-        background-color: #2b3a8c; /* Azul do uniforme */
+        background-color: #2b3a8c; /* Azul Aranha */
         color: white;
         border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
+        padding: 12px 25px;
+        border-radius: 50px; /* Botão mais arredondado */
         cursor: pointer;
-        transition: transform 0.2s, background 0.3s;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin-top: 15px;
+        box-shadow: 0 4px 15px rgba(43, 58, 140, 0.3);
     }
 
     button:hover {
-        background-color: #1a235a;
-        transform: scale(1.05); /* Efeito de pulo no botão */
+        background-color: #b11313;
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(177, 19, 19, 0.4);
     }
 </style>
 </head>
