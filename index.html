@@ -3,80 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title>Olá Mundo Estilizado</title>
- <style>
-    /* O CSS começa aqui */
-    body {
-        /* Gradiente de segurança (caso a imagem não carregue) + Link da Imagem */
-        background: linear-gradient(135deg, #b11313 0%, #2b3a8c 100%), 
-                    url('https://images.alphacoders.com/131/1312384.jpeg');
-        
-        /* Configurações para a imagem cobrir a tela toda */
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Homem-Aranha Style</title>
+    <style>
+        body {
+            /* Imagem do Homem-Aranha direto de um servidor confiável */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                              url('https://images.alphacoders.com/131/1312384.jpeg');
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    /* Overlay para escurecer um pouco a imagem e dar destaque ao cartão */
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.4); /* Escurece 40% da imagem */
-        z-index: -1;
-    }
+        .cartao {
+            background-color: rgba(255, 255, 255, 0.9); /* Branco com transparência */
+            backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: center;
+            border-top: 8px solid #b11313; /* Vermelho Aranha */
+            max-width: 350px;
+            transition: transform 0.3s ease;
+        }
 
-    .cartao {
-        position: relative;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        text-align: center;
-        border-top: 8px solid #b11313; /* Vermelho Aranha */
-        max-width: 350px;
-        z-index: 1;
-    }
+        .cartao:hover {
+            transform: scale(1.05); /* O cartão cresce um pouco ao passar o mouse */
+        }
 
-    h1 {
-        color: #b11313;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+        h1 {
+            color: #b11313;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-    p {
-        color: #333;
-        font-size: 1.1rem;
-        line-height: 1.5;
-    }
+        p {
+            color: #333;
+            font-weight: bold;
+        }
 
-    button {
-        background-color: #2b3a8c; /* Azul Aranha */
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 50px; /* Botão mais arredondado */
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        margin-top: 15px;
-        box-shadow: 0 4px 15px rgba(43, 58, 140, 0.3);
-    }
+        button {
+            background-color: #2b3a8c; /* Azul Aranha */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-    button:hover {
-        background-color: #b11313;
-        transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(177, 19, 19, 0.4);
-    }
-</style>
+        button:hover {
+            background-color: #b11313;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cartao">
+        <h1>Spider-Man!</h1>
+        <p>Com grandes códigos, vêm grandes responsabilidades.</p>
+        <button onclick="alert('THWIP! 🕸️')">Soltar Teia</button>
+    </div>
+
+</body>
+</html>
 </head>
 <body>
 
