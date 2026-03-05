@@ -1,62 +1,71 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Olá Mundo Estilizado</title>
-    <style>
-        /* O CSS começa aqui */
-        body {
-            background-color: #f0f2f5; /* Cor de fundo leve */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Ocupa a altura total da tela */
-            margin: 0;
-        }
+    <meta charset="UTF-8">
+    <title>Olá Mundo Aranha</title>
+    <style>
+        body {
+            /* Adicionando a imagem do Homem-Aranha */
+            background-image: url('https://images.alphacoders.com/937/937353.jpg'); 
+            background-size: cover; /* Faz a imagem cobrir a tela toda */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Mantém o fundo parado ao rolar */
+            background-repeat: no-repeat;
+            
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-        .cartao {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            border-top: 5px solid #007bff;
-        }
+        .cartao {
+            /* Adicionamos uma leve transparência (0.9) para o fundo não sumir */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+            border-top: 5px solid #e23636; /* Mudei para vermelho Aranha */
+            backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+        }
 
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-        }
+        h1 {
+            color: #202020;
+            margin-bottom: 10px;
+        }
 
-        p {
-            color: #666;
-        }
+        p {
+            color: #444;
+            font-weight: 500;
+        }
 
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+        button {
+            background-color: #e23636; /* Vermelho característico */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            font-weight: bold;
+        }
 
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+        button:hover {
+            background-color: #b31b1b;
+            transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+        }
+    </style>
 </head>
 <body>
 
-    <div class="cartao">
-        <h1>Olá, Mundo!</h1>
-        <p>Este código agora tem estilo profissional.</p>
-        <button onclick="alert('Oi!')">Clique aqui</button>
-    </div>
+    <div class="cartao">
+        <h1>Olá, Amigão da Vizinhança!</h1>
+        <p>Com grandes códigos, vêm grandes responsabilidades.</p>
+        <button onclick="alert('Teia lançada!')">Soltar Teia</button>
+    </div>
 
 </body>
 </html>
-
-quero que tenha uma imagem do homem aranha de fundo 
