@@ -1,70 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Olá Mundo</title>
-    <style>
-        /* O CSS começa aqui */
-        body {
-            /* Adicionando a imagem do Homem-Aranha */
-            background-image: <img /imagem/marvel-spider-man.jpg>;
-            background-size: cover; /* Faz a imagem cobrir a tela toda */
-            background-position: center; /* Centraliza a imagem */
-            background-attachment: fixed; /* Mantém o fundo fixo ao rolar */
-            
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    <meta charset="UTF-8">
 
-        .cartao {
-            /* Adicionei um pouco de transparência para o fundo aparecer levemente */
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            text-align: center;
-            /* Mudei a borda para vermelho para combinar com o Homem-Aranha */
-            border-top: 5px solid #b11313; 
-            max-width: 300px;
-        }
+     <img /imagem/marvel-spider-man.jpg>
+    <title>Olá Mundo Estilizado</title>
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Homem-Aranha Style</title>
+    <style>
+        body {
+            /* Imagem do Homem-Aranha direto de um servidor confiável */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                              url('https://images.alphacoders.com/131/1312384.jpeg');
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-        }
+        .cartao {
+            background-color: rgba(255, 255, 255, 0.9); /* Branco com transparência */
+            backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: center;
+            border-top: 8px solid #b11313; /* Vermelho Aranha */
+            max-width: 350px;
+            transition: transform 0.3s ease;
+        }
 
-        p {
-            color: #666;
-        }
+        .cartao:hover {
+            transform: scale(1.05); /* O cartão cresce um pouco ao passar o mouse */
+        }
 
-        button {
-            /* Mudei a cor do botão para o vermelho do Aranha */
-            background-color: #b11313;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: bold;
-        }
+        h1 {
+            color: #b11313;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-        button:hover {
-            background-color: #2b3a8c; /* Azul escuro no hover */
-        }
-    </style>
+        p {
+            color: #333;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #2b3a8c; /* Azul Aranha */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background-color: #b11313;
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
 
-    <div class="cartao">
-        <h1>Olá, Mundo!</h1>
-        <p>Este código agora tem o estilo do Amigão da Vizinhança.</p>
-        <button onclick="alert('Com grandes poderes, vêm grandes responsabilidades!')">Clique aqui</button>
-    </div>
+    <div class="cartao">
+        <h1>Spider-Man!</h1>
+        <p>Com grandes códigos, vêm grandes responsabilidades.</p>
+        <button onclick="alert('THWIP! 🕸️')">Soltar Teia</button>
+    </div>
+
+</body>
+</html>
+</head>
+<body>
+
+    <div class="cartao">
+        <h1>Olá, Mundo!</h1>
+        <p>Este código agora tem estilo profissional.</p>
+        <button onclick="alert('Oi!')">Clique aqui</button>
+    </div>
 
 </body>
 </html>
