@@ -1,60 +1,79 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Olá Mundo Estilizado</title>
-    <style>
-        /* O CSS começa aqui */
-        body {
-            background-color: #f0f2f5; /* Cor de fundo leve */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Ocupa a altura total da tela */
-            margin: 0;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olá Mundo Estilizado</title>
+    <style>
+        /* Reset básico para evitar margens indesejadas em diferentes navegadores */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .cartao {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            border-top: 5px solid #007bff;
-        }
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* min-height é mais seguro que height */
+            margin: 0;
+        }
 
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-        }
+        .cartao {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 5px solid #007bff;
+            max-width: 400px; /* Garante que não fique largo demais em telas grandes */
+            width: 90%; /* Garante que não bata nas bordas em telas pequenas */
+        }
 
-        p {
-            color: #666;
-        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
 
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+        p {
+            color: #666;
+            margin-bottom: 20px; /* Adicionado um espaço maior antes do botão */
+            line-height: 1.5;
+        }
 
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.02); /* Um leve efeito de aumento ao passar o mouse */
+        }
+
+        button:active {
+            transform: scale(0.98); /* Efeito de clique */
+        }
+    </style>
 </head>
 <body>
 
-    <div class="cartao">
-        <h1>Olá, Mundo!</h1>
-        <p>Este código agora tem estilo profissional.</p>
-        <button onclick="alert('Oi!')">Clique aqui</button>
-    </div>
+    <main class="cartao">
+        <h1>Olá, Mundo!</h1>
+        <p>Este código agora tem estilo profissional e é totalmente responsivo.</p>
+        <button type="button" onclick="alert('Oi!')">Clique aqui</button>
+    </main>
 
 </body>
 </html>
