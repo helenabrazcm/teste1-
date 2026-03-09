@@ -8,8 +8,7 @@
         :root {
             --hw-blue: #0066ff;
             --hw-cyan: #00f2ff;
-            --hw-orange: #ff8000; /* Cor clássica da pista */
-            --hw-dark: #001220;
+            --hw-orange: #ff8000;
             --asphalt: #050a0f;
         }
 
@@ -21,9 +20,8 @@
 
         body {
             background: radial-gradient(circle at center, #001a2e 0%, #020508 100%);
-            font-family: 'Segoe UI', Roboto, 'Arial Black', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -32,86 +30,116 @@
             position: relative;
         }
 
-        /* --- Elementos da Animação de Corrida --- */
-        
-        .track-container {
+        /* --- CONTAINER DA CORRIDA --- */
+        .race-track-area {
             position: absolute;
-            bottom: 15%;
+            bottom: 100px; /* Altura onde o carro vai passar */
             width: 100%;
-            height: 40px;
-            display: flex;
-            align-items: center;
+            height: 60px;
+            z-index: 20;
         }
 
-        .track {
+        /* A Pista Laranja */
+        .orange-track {
             position: absolute;
-            height: 12px;
-            background: var(--hw-orange);
-            box-shadow: 0 0 20px rgba(255, 128, 0, 0.6), inset 0 0 5px white;
-            width: 0; /* Começa vazia */
+            bottom: 0;
             left: 0;
+            height: 15px;
+            background: var(--hw-orange);
+            box-shadow: 0 0 20px rgba(255, 128, 0, 0.8);
             border-radius: 0 10px 10px 0;
-            animation: build-track 3s linear infinite;
-            z-index: 5;
+            width: 0; /* Começa em zero */
+            animation: move-track 4s linear infinite;
         }
 
-        .car {
+        /* O Carro */
+        .car-runner {
             position: absolute;
             bottom: 5px;
-            left: -150px; /* Começa fora da tela */
-            width: 120px;
-            z-index: 6;
-            animation: car-race 3s linear infinite;
-        }
-
-        /* Desenho simples do carro via CSS/SVG para garantir que apareça */
-        .car-body {
-            fill: var(--hw-blue);
+            left: -100px;
+            font-size: 50px; /* Tamanho do carro (emoji) */
             filter: drop-shadow(0 0 10px var(--hw-cyan));
+            animation: move-car 4s linear infinite;
+            z-index: 21;
+            white-space: nowrap;
         }
 
-        /* --- Estilos Originais Mantidos --- */
-
-        #glitter-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .sparkle {
-            position: absolute;
-            background: linear-gradient(to bottom, var(--hw-cyan), var(--hw-blue));
-            border-radius: 1px;
-            filter: blur(0.5px);
-            box-shadow: 0 0 10px var(--hw-blue);
-            animation: nitro-drift linear infinite;
-        }
-
+        /* --- CARTÃO PRINCIPAL --- */
         .cartao-hw {
             position: relative;
-            z-index: 10;
-            background: rgba(0, 20, 40, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 3.5rem;
-            border-radius: 15px;
+            z-index: 50;
+            background: rgba(0, 20, 40, 0.7);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 20px;
             text-align: center;
-            border: 2px solid rgba(0, 102, 255, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
-            max-width: 500px;
-            width: 90%;
-            transform: skewX(-3deg);
-            margin-bottom: 100px; /* Espaço para o carro passar */
+            border: 2px solid var(--hw-blue);
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+            transform: skewX(-4deg);
         }
 
         h1 {
             font-size: 4rem;
-            font-weight: 900;
             font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: -3px;
-            background: linear-gradient(to bottom, #ffffff 10%, var(--hw-cyan) 40%, var(--hw-blue) 100%);
+            font-weight: 900;
+            background: linear-gradient(to bottom, #fff, var(--hw-cyan), var(--hw-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0
+            text-transform: uppercase;
+        }
+
+        /* --- ANIMAÇÕES --- */
+        @keyframes move-car {
+            0% { left: -100px; }
+            100% { left: 110%; }
+        }
+
+        @keyframes move-track {
+            0% { width: 0; }
+            100% { width: 110%; }
+        }
+
+        /* Faíscas de fundo */
+        .sparkle {
+            position: absolute;
+            background: var(--hw-cyan);
+            width: 2px;
+            height: 20px;
+            opacity: 0.5;
+            animation: drift linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-10vh); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles"></div>
+
+    <div class="cartao-hw">
+        <h1>HOT WHEELS</h1>
+        <p style="font-style: italic; color: var(--hw-cyan); margin-top: 10px;">VELOCIDADE MÁXIMA</p>
+    </div>
+
+    <div class="race-track-area">
+        <div class="orange-track"></div>
+        <div class="car-runner">🏎️</div>
+    </div>
+
+    <script>
+        // Criador de partículas simples
+        const partContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'sparkle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            p.style.animationDelay = Math.random() * 3 + 's';
+            partContainer.appendChild(p);
+        }
+    </script>
+</body>
+</html>
