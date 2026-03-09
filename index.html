@@ -8,8 +8,7 @@
         :root {
             --hw-blue: #0066ff;
             --hw-cyan: #00f2ff;
-            --hw-orange: #ff8000; /* Cor clássica da pista */
-            --hw-dark: #001220;
+            --hw-orange: #ff8000;
             --asphalt: #050a0f;
         }
 
@@ -21,9 +20,8 @@
 
         body {
             background: radial-gradient(circle at center, #001a2e 0%, #020508 100%);
-            font-family: 'Segoe UI', Roboto, 'Arial Black', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -32,295 +30,116 @@
             position: relative;
         }
 
-        /* --- Elementos da Animação de Corrida --- */
-        
-        .track-container {
+        /* --- CONTAINER DA CORRIDA --- */
+        .race-track-area {
             position: absolute;
-            bottom: 15%;
+            bottom: 100px; /* Altura onde o carro vai passar */
             width: 100%;
-            height: 40px;
-            display: flex;
-            align-items: center;
+            height: 60px;
+            z-index: 20;
         }
 
-        .track {
+        /* A Pista Laranja */
+        .orange-track {
             position: absolute;
-            height: 12px;
-            background: var(--hw-orange);
-            box-shadow: 0 0 20px rgba(255, 128, 0, 0.6), inset 0 0 5px white;
-            width: 0; /* Começa vazia */
+            bottom: 0;
             left: 0;
+            height: 15px;
+            background: var(--hw-orange);
+            box-shadow: 0 0 20px rgba(255, 128, 0, 0.8);
             border-radius: 0 10px 10px 0;
-            animation: build-track 3s linear infinite;
-            z-index: 5;
+            width: 0; /* Começa em zero */
+            animation: move-track 4s linear infinite;
         }
 
-        .car {
+        /* O Carro */
+        .car-runner {
             position: absolute;
             bottom: 5px;
-            left: -150px; /* Começa fora da tela */
-            width: 120px;
-            z-index: 6;
-            animation: car-race 3s linear infinite;
-        }
-
-        /* Desenho simples do carro via CSS/SVG para garantir que apareça */
-        .car-body {
-            fill: var(--hw-blue);
+            left: -100px;
+            font-size: 50px; /* Tamanho do carro (emoji) */
             filter: drop-shadow(0 0 10px var(--hw-cyan));
+            animation: move-car 4s linear infinite;
+            z-index: 21;
+            white-space: nowrap;
         }
 
-        /* --- Estilos Originais Mantidos --- */
-
-        #glitter-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .sparkle {
-            position: absolute;
-            background: linear-gradient(to bottom, var(--hw-cyan), var(--hw-blue));
-            border-radius: 1px;
-            filter: blur(0.5px);
-            box-shadow: 0 0 10px var(--hw-blue);
-            animation: nitro-drift linear infinite;
-        }
-
+        /* --- CARTÃO PRINCIPAL --- */
         .cartao-hw {
             position: relative;
-            z-index: 10;
-<<<<<<< HEAD
-            background: rgba(0, 20, 40, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 3.5rem;
-            border-radius: 15px;
+            z-index: 50;
+            background: rgba(0, 20, 40, 0.7);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 20px;
             text-align: center;
-            border: 2px solid rgba(0, 102, 255, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
-            max-width: 500px;
-            width: 90%;
-            transform: skewX(-3deg);
-            margin-bottom: 100px; /* Espaço para o carro passar */
+            border: 2px solid var(--hw-blue);
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+            transform: skewX(-4deg);
         }
 
         h1 {
             font-size: 4rem;
-            font-weight: 900;
             font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: -3px;
-            background: linear-gradient(to bottom, #ffffff 10%, var(--hw-cyan) 40%, var(--hw-blue) 100%);
+            font-weight: 900;
+            background: linear-gradient(to bottom, #fff, var(--hw-cyan), var(--hw-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.6));
-        }
-
-        p {
-            color: var(--hw-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-style: italic;
         }
 
-        .btn-hw {
-            background: var(--hw-blue);
-            color: white;
-            text-decoration: none;
-            padding: 18px 50px;
-            border-radius: 4px;
-            font-weight: 900;
-            text-transform: uppercase;
-            display: inline-block;
-            transition: all 0.2s ease;
-            box-shadow: 5px 5px 0px #003380;
-            font-style: italic;
+        /* --- ANIMAÇÕES --- */
+        @keyframes move-car {
+            0% { left: -100px; }
+            100% { left: 110%; }
         }
 
-        /* --- Keyframes --- */
-
-        @keyframes build-track {
-            0% { width: 0; left: 0; opacity: 1; }
-            70% { width: 100%; left: 0; opacity: 1; }
-            90% { width: 100%; left: 0; opacity: 0; }
-            100% { width: 0; left: 0; opacity: 0; }
+        @keyframes move-track {
+            0% { width: 0; }
+            100% { width: 110%; }
         }
 
-        @keyframes car-race {
-            0% { left: -150px; transform: scale(0.8) skewX(10deg); }
-            70% { left: 100%; transform: scale(1) skewX(10deg); }
-            100% { left: 120%; transform: scale(1) skewX(10deg); }
+        /* Faíscas de fundo */
+        .sparkle {
+            position: absolute;
+            background: var(--hw-cyan);
+            width: 2px;
+            height: 20px;
+            opacity: 0.5;
+            animation: drift linear infinite;
         }
 
-        @keyframes nitro-drift {
-            0% { transform: translateY(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-110vh); opacity: 0; }
+        @keyframes drift {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-10vh); }
         }
-
     </style>
 </head>
 <body>
 
-    <div id="glitter-container"></div>
+    <div id="particles"></div>
 
     <div class="cartao-hw">
         <h1>HOT WHEELS</h1>
-        <p>Acelere para a diversão.</p>
-        <div class="btn-group">
-            <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="btn-hw">shop</a>
-        </div>
+        <p style="font-style: italic; color: var(--hw-cyan); margin-top: 10px;">VELOCIDADE MÁXIMA</p>
     </div>
 
-    <div class="track-container">
-        <div class="track"></div>
-        <div class="car">
-            <svg viewBox="0 0 120 40" xmlns="https://pt.pngtree.com/freepng/the-action-of-a-zooming-blue-hot-wheels-car-super_20462173.html">
-                <path class="car-body" d="M10,30 L110,30 L105,15 L80,10 L30,10 L15,20 Z" />
-                <circle cx="30" cy="32" r="7" fill="#111" stroke="#00f2ff" stroke-width="2"/>
-                <circle cx="90" cy="32" r="7" fill="#111" stroke="#00f2ff" stroke-width="2"/>
-                <rect x="40" y="15" width="25" height="8" fill="rgba(255,255,255,0.3)" />
-            </svg>
-        </div>
+    <div class="race-track-area">
+        <div class="orange-track"></div>
+        <div class="car-runner">🏎️</div>
     </div>
 
     <script>
-        const container = document.getElementById('glitter-container');
-        const count = 40;
-
-        for (let i = 0; i < count; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.width = Math.random() * 2 + 1 + 'px';
-            sparkle.style.height = Math.random() * 15 + 10 + 'px';
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = '100vh';
-            sparkle.style.animationDuration = Math.random() * 1 + 0.5 + 's';
-            sparkle.style.animationDelay = Math.random() * 4 + 's';
-            container.appendChild(sparkle);
+        // Criador de partículas simples
+        const partContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'sparkle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            p.style.animationDelay = Math.random() * 3 + 's';
+            partContainer.appendChild(p);
         }
     </script>
 </body>
 </html>
-=======
-            background: rgba(0, 20, 40, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 3.5rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid rgba(0, 102, 255, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
-            max-width: 500px;
-            width: 90%;
-            transform: skewX(-3deg);
-            margin-bottom: 100px; /* Espaço para o carro passar */
-        }
-
-        h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: -3px;
-            background: linear-gradient(to bottom, #ffffff 10%, var(--hw-cyan) 40%, var(--hw-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.6));
-        }
-
-        p {
-            color: var(--hw-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-style: italic;
-        }
-
-        .btn-hw {
-            background: var(--hw-blue);
-            color: white;
-            text-decoration: none;
-            padding: 18px 50px;
-            border-radius: 4px;
-            font-weight: 900;
-            text-transform: uppercase;
-            display: inline-block;
-            transition: all 0.2s ease;
-            box-shadow: 5px 5px 0px #003380;
-            font-style: italic;
-        }
-
-        /* --- Keyframes --- */
-
-        @keyframes build-track {
-            0% { width: 0; left: 0; opacity: 1; }
-            70% { width: 100%; left: 0; opacity: 1; }
-            90% { width: 100%; left: 0; opacity: 0; }
-            100% { width: 0; left: 0; opacity: 0; }
-        }
-
-        @keyframes car-race {
-            0% { left: -150px; transform: scale(0.8) skewX(10deg); }
-            70% { left: 100%; transform: scale(1) skewX(10deg); }
-            100% { left: 120%; transform: scale(1) skewX(10deg); }
-        }
-
-        @keyframes nitro-drift {
-            0% { transform: translateY(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-110vh); opacity: 0; }
-        }
-
-    </style>
-</head>
-<body>
-
-    <div id="glitter-container"></div>
-
-    <div class="cartao-hw">
-        <h1>HOT WHEELS</h1>
-        <p>Acelere para a diversão.</p>
-        <div class="btn-group">
-            <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="btn-hw">shop</a>
-        </div>
-    </div>
-
-    <div class="track-container">
-        <div class="track"></div>
-        <div class="car">
-            <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-                <path class="car-body" d="M10,30 L110,30 L105,15 L80,10 L30,10 L15,20 Z" />
-                <circle cx="30" cy="32" r="7" fill="#111" stroke="#00f2ff" stroke-width="2"/>
-                <circle cx="90" cy="32" r="7" fill="#111" stroke="#00f2ff" stroke-width="2"/>
-                <rect x="40" y="15" width="25" height="8" fill="rgba(255,255,255,0.3)" />
-            </svg>
-        </div>
-    </div>
-
-    <script>
-        const container = document.getElementById('glitter-container');
-        const count = 40;
-
-        for (let i = 0; i < count; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.width = Math.random() * 2 + 1 + 'px';
-            sparkle.style.height = Math.random() * 15 + 10 + 'px';
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = '100vh';
-            sparkle.style.animationDuration = Math.random() * 1 + 0.5 + 's';
-            sparkle.style.animationDelay = Math.random() * 4 + 's';
-            container.appendChild(sparkle);
-        }
-    </script>
-</body>
-</html>
->>>>>>> 450f9a37fd0897a8b1e7a846c8fb7434fd1bce9e
