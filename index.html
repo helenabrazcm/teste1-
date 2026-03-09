@@ -102,7 +102,7 @@
             background: rgba(0, 20, 40, 0.5);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 3rem;
+            padding: 3.5rem;
             border-radius: 15px;
             text-align: center;
             border: 2px solid rgba(0, 102, 255, 0.4);
@@ -115,7 +115,7 @@
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
             font-style: italic;
             text-transform: uppercase;
@@ -123,14 +123,14 @@
             background: linear-gradient(to bottom, #ffffff 10%, var(--hw-cyan) 40%, var(--hw-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.6));
         }
 
         p {
             color: var(--hw-cyan);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 35px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -138,22 +138,21 @@
             opacity: 0.9;
         }
 
-        /* --- Novo Botão com o Símbolo --- */
+        /* --- Estilo do Logo-Botão --- */
         .logo-link {
             display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
         }
 
         .logo-link:hover {
-            transform: scale(1.1) rotate(2deg);
-            filter: drop-shadow(0 8px 25px var(--hw-orange));
+            transform: scale(1.1);
+            filter: drop-shadow(0 8px 20px var(--hw-orange));
         }
 
         .hw-symbol {
-            width: 220px; /* Ajuste o tamanho conforme necessário */
+            width: 200px;
             height: auto;
-            display: block;
         }
 
         @keyframes nitro-drift {
@@ -168,11 +167,11 @@
     <div id="glitter-container"></div>
 
     <div class="cartao-hw">
-        <h1>BLUE VELOCITY</h1>
+        <h1>HOT WHEELS</h1>
         <p>Acelere para a diversão.</p>
         <div class="btn-group">
             <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="logo-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hot_Wheels_logo.svg" alt="Hot Wheels Logo" class="hw-symbol">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hot_Wheels_logo.svg" alt="Hot Wheels" class="hw-symbol">
             </a>
         </div>
     </div>
