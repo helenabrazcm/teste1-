@@ -6,12 +6,11 @@
     <title>Hot Wheels - Blue Velocity</title>
     <style>
         :root {
-            /* Paleta Azul de Alta Performance */
             --hw-blue: #0066ff;
             --hw-cyan: #00f2ff;
             --hw-dark: #001220;
             --asphalt: #050a0f;
-            --hw-orange: #ff8000; /* Cor da pista */
+            --hw-orange: #ff8000;
         }
 
         * {
@@ -34,23 +33,23 @@
             position: relative;
         }
 
-        /* --- Estilos da Pista e do Carro --- */
+        /* --- Estilos da Pista e do Carro (Ajustados para baixo e maiores) --- */
         .race-track-area {
             position: absolute;
-            bottom: 10%;
+            bottom: 2%; /* Mais para baixo */
             width: 100%;
-            height: 100px;
+            height: 180px; /* Aumentado para comportar o carro maior */
             z-index: 15;
             pointer-events: none;
         }
 
         .orange-track {
             position: absolute;
-            bottom: 20px;
+            bottom: 40px; /* Posição da pista em relação ao container */
             left: 0;
-            height: 12px;
+            height: 18px; /* Pista um pouco mais grossa */
             background: var(--hw-orange);
-            box-shadow: 0 0 15px var(--hw-orange), inset 0 0 5px white;
+            box-shadow: 0 0 20px var(--hw-orange), inset 0 0 8px white;
             width: 0;
             border-radius: 0 10px 10px 0;
             animation: move-track 4s linear infinite;
@@ -58,156 +57,12 @@
 
         .car-runner {
             position: absolute;
-            bottom: 0;
-            left: -250px;
-            width: 200px; /* Ajuste do tamanho da imagem */
+            bottom: 10px; /* Ajustado para "sentar" na pista */
+            left: -350px;
+            width: 350px; /* Carro bem maior */
             z-index: 16;
             animation: move-car 4s linear infinite;
         }
 
         .car-runner img {
             width: 100%;
-            height: auto;
-            /* Filtro opcional para dar brilho */
-            filter: drop-shadow(0 0 10px var(--hw-cyan));
-        }
-
-        /* Animações Sincronizadas */
-        @keyframes move-car {
-            0% { left: -250px; }
-            100% { left: 110%; }
-        }
-
-        @keyframes move-track {
-            0% { width: 0; }
-            100% { width: 110%; }
-        }
-
-        /* --- Resto do código original --- */
-        #glitter-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .sparkle {
-            position: absolute;
-            background: linear-gradient(to bottom, var(--hw-cyan), var(--hw-blue));
-            border-radius: 1px;
-            filter: blur(0.5px);
-            box-shadow: 0 0 10px var(--hw-blue);
-            animation: nitro-drift linear infinite;
-        }
-
-        .cartao-hw {
-            position: relative;
-            z-index: 10;
-            background: rgba(0, 20, 40, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 3.5rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid rgba(0, 102, 255, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9),
-                        inset 0 0 20px rgba(0, 242, 255, 0.1);
-            max-width: 500px;
-            width: 90%;
-            transform: skewX(-3deg);
-        }
-
-        h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: -3px;
-            background: linear-gradient(to bottom, #ffffff 10%, var(--hw-cyan) 40%, var(--hw-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-            filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.6));
-        }
-
-        p {
-            color: var(--hw-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-hw {
-            background: var(--hw-blue);
-            color: white;
-            text-decoration: none;
-            border: none;
-            padding: 18px 50px;
-            border-radius: 4px;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 5px 5px 0px #003380;
-            font-size: 1.1rem;
-            font-style: italic;
-        }
-
-        .btn-hw:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0px #003380;
-            background: #0077ff;
-            filter: brightness(1.2);
-        }
-
-        .btn-hw:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px;
-        }
-
-        @keyframes nitro-drift {
-            0% { transform: translateY(0) scaleY(1); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(-110vh) scaleY(2); opacity: 0; }
-        }
-
-    </style>
-</head>
-<body>
-
-    <div id="glitter-container"></div>
-
-    <div class="cartao-hw">
-        <h1>HOT WHEELS</h1>
-        <p>Acelere para a diversão.</p>
-        
-        <div class="btn-group">
-            <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="btn-hw">shop</a>
-        </div>
-    </div>
-
-    <div class="race-track-area">
-        <div class="orange-track"></div>
- <div class="car-runner">🏎️</div>
-    </div>
-
-    <script>
-        // Criador de partículas simples
-        const partContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const p = document.createElement('div');
-            p.className = 'sparkle';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDuration = (Math.random() * 2 + 1) + 's';
-            p.style.animationDelay = Math.random() * 3 + 's';
-            partContainer.appendChild(p);
-        }
