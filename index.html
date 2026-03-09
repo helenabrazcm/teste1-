@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbie Future World - Blue Edition</title>
+    <title>Hot Wheels Future Race</title>
     <style>
         :root {
-            /* Novas cores em tons de azul */
-            --barbie-blue: #0084ff;
-            --barbie-glow: #00f2ff;
-            --soft-blue: #a3d8ff;
-            --dark-bg: #000814;
+            /* Cores icônicas da Hot Wheels */
+            --hw-orange: #ff4500;
+            --hw-yellow: #ffcc00;
+            --hw-accent: #ffeb3b;
+            --dark-asphalt: #0f0f0f;
         }
 
         * {
@@ -20,10 +20,10 @@
         }
 
         body {
-            background-color: var(--dark-bg);
-            /* Degradê profundo em tons de azul marinho */
-            background: radial-gradient(circle at center, #001d3d 0%, #000814 100%);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-asphalt);
+            /* Fundo com degradê que lembra fumaça e asfalto */
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            font-family: 'Segoe UI', Roboto, 'Arial Black', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -34,7 +34,7 @@
             position: relative;
         }
 
-        /* Partículas de Brilho (Glitter Azul) */
+        /* Partículas de "Faíscas" em vez de Glitter */
         #glitter-container {
             position: absolute;
             width: 100%;
@@ -44,91 +44,101 @@
 
         .sparkle {
             position: absolute;
-            background: var(--barbie-glow);
-            border-radius: 50%;
-            filter: blur(1px);
-            box-shadow: 0 0 10px var(--barbie-blue);
-            animation: twinkle linear infinite;
+            background: linear-gradient(to bottom, var(--hw-yellow), var(--hw-orange));
+            border-radius: 2px; /* Faíscas mais retangulares/agudas */
+            filter: blur(0.5px);
+            box-shadow: 0 0 8px var(--hw-orange);
+            animation: drift linear infinite;
         }
 
-        /* Cartão Glassmorphism */
-        .cartao-barbie {
+        /* Cartão Hot Wheels Racing */
+        .cartao-hw {
             position: relative;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(40, 40, 40, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 3.5rem;
-            border-radius: 40px;
+            border-radius: 20px; /* Bordas menos arredondadas, mais industriais */
             text-align: center;
-            border: 2px solid rgba(0, 132, 255, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
-                        inset 0 0 30px rgba(0, 132, 255, 0.1);
-            max-width: 500px;
+            border: 2px solid rgba(255, 69, 0, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8),
+                        inset 0 0 20px rgba(255, 204, 0, 0.05);
+            max-width: 550px;
             width: 90%;
+            transform: skewX(-2deg); /* Inclinação para dar sensação de velocidade */
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
             font-style: italic;
             text-transform: uppercase;
-            letter-spacing: -2px;
-            /* Gradiente do Branco para o Azul */
-            background: linear-gradient(to bottom, #ffffff, var(--barbie-blue));
+            letter-spacing: -3px;
+            /* Efeito de fogo/metal quente */
+            background: linear-gradient(to bottom, #ffffff 20%, var(--hw-yellow) 50%, var(--hw-orange) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 5px 15px rgba(255, 69, 0, 0.5));
         }
 
         p {
-            color: var(--soft-blue);
-            font-size: 1.1rem;
+            color: var(--hw-yellow);
+            font-size: 1.2rem;
             margin-bottom: 35px;
-            font-weight: 300;
-            letter-spacing: 1px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-style: italic;
         }
 
-        /* Botões */
+        /* Botões Estilo Corrida */
         .btn-group {
             display: flex;
             gap: 15px;
             justify-content: center;
         }
 
-        .btn-barbie {
-            background: var(--barbie-blue);
+        .btn-hw {
+            background: var(--hw-orange);
             color: white;
             text-decoration: none;
             border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: bold;
+            padding: 15px 35px;
+            border-radius: 5px; /* Bordas retas */
+            font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0, 132, 255, 0.3);
-            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            box-shadow: 4px 4px 0px #8b0000;
+            font-size: 1rem;
+            font-style: italic;
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--barbie-blue);
-            box-shadow: none;
-            color: var(--barbie-blue);
+            border: 2px solid var(--hw-yellow);
+            box-shadow: 4px 4px 0px var(--hw-orange);
+            color: var(--hw-yellow);
         }
 
-        .btn-barbie:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 30px rgba(0, 132, 255, 0.5);
+        .btn-hw:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #8b0000;
             filter: brightness(1.2);
         }
 
-        /* Animação */
-        @keyframes twinkle {
-            0% { transform: translateY(0); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+        .btn-hw:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px;
+        }
+
+        /* Animação de Faíscas Subindo */
+        @keyframes drift {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
 
     </style>
@@ -137,35 +147,37 @@
 
     <div id="glitter-container"></div>
 
-    <div class="cartao-barbie">
-        <h1>BARBIE</h1>
-        <p>You can be anything, even in the future.</p>
+    <div class="cartao-hw">
+        <h1>HOT WHEELS</h1>
+        <p>It's not the same without the flame.</p>
        
         <div class="btn-group">
-            <a href="https://shop.mattel.com/pt-br/pages/barbie" target="_blank" class="btn-barbie">Shop Now</a>
-            <button class="btn-barbie btn-outline" onclick="alert('Explorando a Dreamhouse Azul...')">Explorar</button>
+            <a href="https://shop.mattel.com/collections/hot-wheels" target="_blank" class="btn-hw">Race Now</a>
+            <button class="btn-hw btn-outline" onclick="alert('Ligando os motores da Garagem Futurista...')">Garagem</button>
         </div>
     </div>
 
     <script>
         const container = document.getElementById('glitter-container');
-        const count = 50;
+        const count = 60;
 
         for (let i = 0; i < count; i++) {
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
            
-            const size = Math.random() * 4 + 2 + 'px';
-            sparkle.style.width = size;
-            sparkle.style.height = size;
+            const width = Math.random() * 2 + 1 + 'px';
+            const height = Math.random() * 10 + 5 + 'px'; // Mais compridas como faíscas
+            sparkle.style.width = width;
+            sparkle.style.height = height;
            
             sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.top = '100vh';
            
-            sparkle.style.animationDuration = Math.random() * 3 + 2 + 's';
+            sparkle.style.animationDuration = Math.random() * 1.5 + 0.5 + 's';
             sparkle.style.animationDelay = Math.random() * 5 + 's';
 
             container.appendChild(sparkle);
         }
     </script>
 </body>
+</html>
