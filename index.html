@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* --- Estilos da Pista e do Carro (Esquerda para Direita) --- */
+        /* --- Estilos da Pista e do Carro --- */
         .race-track-area {
             position: absolute;
             bottom: 5%; 
@@ -46,7 +46,7 @@
         .orange-track {
             position: absolute;
             bottom: 40px;
-            left: 0; /* Começa na esquerda */
+            left: 0; 
             height: 16px;
             background: var(--hw-orange);
             box-shadow: 0 0 20px var(--hw-orange), inset 0 0 8px white;
@@ -58,11 +58,12 @@
         .car-runner {
             position: absolute;
             bottom: 38px;
-            left: -100px; /* Nasce na esquerda */
+            left: -100px; 
             font-size: 60px; 
             z-index: 16;
             filter: drop-shadow(0 0 12px var(--hw-cyan));
-            /* O emoji original 🏎️ já aponta para a direita */
+            /* Vira o emoji para a esquerda */
+            transform: scaleX(-1); 
             animation: move-car-right 4s linear infinite;
             display: flex;
             align-items: center;
