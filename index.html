@@ -197,9 +197,21 @@
 
     <div class="race-track-area">
         <div class="orange-track"></div>
-           <div class="car-runner">🏎️</div>
-        </div>
+ <div class="car-runner">🏎️</div>
     </div>
+
+    <script>
+        // Criador de partículas simples
+        const partContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'sparkle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            p.style.animationDelay = Math.random() * 3 + 's';
+            partContainer.appendChild(p);
+        }
+z
 
     <script>
         const container = document.getElementById('glitter-container');
