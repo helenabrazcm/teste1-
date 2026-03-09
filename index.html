@@ -10,7 +10,6 @@
             --hw-orange: #ff6a00;
             --hw-yellow: #ffcc00;
             --dark-asphalt: #0f0f0f;
-            --tire-glow: rgba(255, 204, 0, 0.4);
         }
 
         * {
@@ -21,7 +20,6 @@
 
         body {
             background-color: var(--dark-asphalt);
-            /* Gradiente simulando rastro de pneu e asfalto */
             background: radial-gradient(circle at center, #222 0%, #050505 100%);
             font-family: 'Impact', 'Arial Black', sans-serif;
             display: flex;
@@ -34,12 +32,15 @@
             position: relative;
         }
 
-        /* Efeito de Velocidade (Rastros de Fogo) */
+        /* Container de Velocidade */
         #speed-container {
             position: absolute;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
             z-index: 1;
+            pointer-events: none;
         }
 
         .streak {
@@ -52,11 +53,11 @@
             animation: drive-fast linear infinite;
         }
 
-        /* Cartão Hot Wheels High-Tech */
+        /* Cartão Hot Wheels */
         .cartao-hw {
             position: relative;
             z-index: 10;
-            background: rgba(20, 20, 20, 0.8);
+            background: rgba(20, 20, 20, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             padding: 3.5rem;
@@ -66,76 +67,4 @@
             border-right: 2px solid var(--hw-yellow);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
                         inset 0 0 20px rgba(230, 0, 0, 0.2);
-            max-width: 550px;
-            width: 90%;
-            transform: skewX(-2deg); /* Inclinação para dar ideia de movimento */
-        }
-
-        h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            line-height: 0.9;
-            background: linear-gradient(to bottom, var(--hw-yellow) 20%, var(--hw-red) 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            filter: drop-shadow(3px 3px 0px #000);
-        }
-
-        p {
-            color: #ccc;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Botões Estilo Racing */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .btn-hw {
-            background: var(--hw-red);
-            color: white;
-            text-decoration: none;
-            border: none;
-            padding: 18px 35px;
-            border-radius: 4px;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-style: italic;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 5px 5px 0px var(--hw-yellow);
-            font-size: 1rem;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--hw-yellow);
-            color: var(--hw-yellow);
-            box-shadow: 5px 5px 0px var(--hw-red);
-        }
-
-        .btn-hw:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0px white;
-            filter: brightness(1.2);
-        }
-
-        .btn-hw:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px white;
-        }
-
-        /* Animação de Velocidade */
-        @keyframes drive-fast {
-            0% { transform: translateX(-100vw); opacity:
+            max-
