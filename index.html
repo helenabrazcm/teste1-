@@ -33,12 +33,12 @@
             position: relative;
         }
 
-        /* --- Estilos da Pista e do Carro (Invertidos) --- */
+        /* --- Estilos da Pista e do Carro (Direita para Esquerda) --- */
         .race-track-area {
             position: absolute;
             bottom: 5%; 
             width: 100%;
-            height: 180px;
+            height: 150px;
             z-index: 15;
             pointer-events: none;
         }
@@ -46,39 +46,37 @@
         .orange-track {
             position: absolute;
             bottom: 40px;
-            right: 0; /* Alinhado à direita agora */
-            height: 18px;
+            right: 0; 
+            height: 16px;
             background: var(--hw-orange);
             box-shadow: 0 0 20px var(--hw-orange), inset 0 0 8px white;
             width: 0;
-            border-radius: 10px 0 0 10px; /* Arredondamento invertido */
+            border-radius: 10px 0 0 10px;
             animation: move-track-left 4s linear infinite;
         }
 
         .car-runner {
             position: absolute;
-            bottom: 35px;
-            right: -150px;
-            font-size: 80px;
+            bottom: 38px;
+            right: -100px;
+            font-size: 60px; /* Tamanho reduzido */
             z-index: 16;
-            filter: drop-shadow(0 0 15px var(--hw-cyan));
-            /* Inverte o emoji horizontalmente */
-            transform: scaleX(-1); 
+            filter: drop-shadow(0 0 12px var(--hw-cyan));
+            transform: scaleX(-1); /* Espelha o emoji para apontar para a esquerda */
             animation: move-car-left 4s linear infinite;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* Animação para a esquerda */
         @keyframes move-car-left {
-            0% { right: -150px; }
-            100% { right: 110%; }
+            0% { right: -100px; }
+            100% { right: 115%; }
         }
 
         @keyframes move-track-left {
             0% { width: 0; }
-            100% { width: 110%; }
+            100% { width: 115%; }
         }
 
         /* --- Estilos do Card --- */
@@ -108,95 +106,4 @@
             border-radius: 15px;
             text-align: center;
             border: 2px solid rgba(0, 102, 255, 0.4);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9),
-                        inset 0 0 20px rgba(0, 242, 255, 0.1);
-            max-width: 500px;
-            width: 90%;
-            transform: skewX(-3deg);
-            margin-top: -100px;
-        }
-
-        h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: -3px;
-            background: linear-gradient(to bottom, #ffffff 10%, var(--hw-cyan) 40%, var(--hw-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-            filter: drop-shadow(0 0 15px rgba(0, 102, 255, 0.6));
-        }
-
-        p {
-            color: var(--hw-cyan);
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
-        .btn-hw {
-            background: var(--hw-blue);
-            color: white;
-            text-decoration: none;
-            padding: 18px 50px;
-            border-radius: 4px;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 5px 5px 0px #003380;
-            font-size: 1.1rem;
-            font-style: italic;
-            display: inline-block;
-        }
-
-        @keyframes nitro-drift {
-            0% { transform: translateY(0) scaleY(1); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(-110vh) scaleY(2); opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="glitter-container"></div>
-
-    <div class="cartao-hw">
-        <h1>HOT WHEELS</h1>
-        <p>Acelere para a diversão.</p>
-        <div class="btn-group">
-            <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="btn-hw">shop</a>
-        </div>
-    </div>
-
-    <div class="race-track-area">
-        <div class="orange-track"></div>
-        <div class="car-runner">
-            🏎️
-        </div>
-    </div>
-
-    <script>
-        const container = document.getElementById('glitter-container');
-        const count = 40;
-
-        for (let i = 0; i < count; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.width = Math.random() * 2 + 1 + 'px';
-            sparkle.style.height = Math.random() * 15 + 10 + 'px';
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = '100vh';
-            sparkle.style.animationDuration = Math.random() * 1 + 0.5 + 's';
-            sparkle.style.animationDelay = Math.random() * 4 + 's';
-            container.appendChild(sparkle);
-        }
-    </script>
-</body>
-</html>
+            box-shadow: 0 25px
