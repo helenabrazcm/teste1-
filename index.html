@@ -124,22 +124,35 @@
         <p style="font-style: italic; color: var(--hw-cyan); margin-top: 10px;">Acelere para a diversão.</p>
     </div>
 
+<div class="btn-group">
+            <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="btn-hw">shop</a>
+        </div>
+
     <div class="race-track-area">
         <div class="orange-track"></div>
         <div class="car-runner">🏎️</div>
     </div>
 
     <script>
-        // Criador de partículas simples
-        const partContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const p = document.createElement('div');
-            p.className = 'sparkle';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDuration = (Math.random() * 2 + 1) + 's';
-            p.style.animationDelay = Math.random() * 3 + 's';
-            partContainer.appendChild(p);
-        }
-    </script>
+        const container = document.getElementById('glitter-container');
+        const count = 40;
+
+        for (let i = 0; i < count; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+           
+            const width = Math.random() * 2 + 1 + 'px';
+            const height = Math.random() * 15 + 10 + 'px';
+            sparkle.style.width = width;
+            sparkle.style.height = height;
+           
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = '100vh';
+           
+            sparkle.style.animationDuration = Math.random() * 1 + 0.5 + 's';
+            sparkle.style.animationDelay = Math.random() * 4 + 's';
+
+              container.appendChild(sparkle);
+        }
+    </script>
 </body>
-</html>
