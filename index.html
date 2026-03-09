@@ -211,29 +211,3 @@
             p.style.animationDelay = Math.random() * 3 + 's';
             partContainer.appendChild(p);
         }
-z
-
-    <script>
-        const container = document.getElementById('glitter-container');
-        const count = 40;
-
-        for (let i = 0; i < count; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            
-            const width = Math.random() * 2 + 1 + 'px';
-            const height = Math.random() * 15 + 10 + 'px';
-            sparkle.style.width = width;
-            sparkle.style.height = height;
-            
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = '100vh';
-            
-            sparkle.style.animationDuration = Math.random() * 1 + 0.5 + 's';
-            sparkle.style.animationDelay = Math.random() * 4 + 's';
-
-            container.appendChild(sparkle);
-        }
-    </script>
-</body>
-</html>
