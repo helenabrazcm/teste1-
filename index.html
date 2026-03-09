@@ -6,10 +6,12 @@
     <title>Hot Wheels - Blue Velocity</title>
     <style>
         :root {
+            /* Paleta Azul de Alta Performance */
             --hw-blue: #0066ff;
             --hw-cyan: #00f2ff;
-            --hw-orange: #ff8000;
+            --hw-dark: #001220;
             --asphalt: #050a0f;
+            --hw-orange: #ff8000; /* Cor da pista */
         }
 
         * {
@@ -19,9 +21,11 @@
         }
 
         body {
+            background-color: var(--asphalt);
             background: radial-gradient(circle at center, #001a2e 0%, #020508 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Arial Black', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -30,67 +34,47 @@
             position: relative;
         }
 
-        /* --- CONTAINER DA CORRIDA --- */
+        /* --- Estilos da Pista e do Carro --- */
         .race-track-area {
             position: absolute;
-            bottom: 100px; /* Altura onde o carro vai passar */
+            bottom: 10%;
             width: 100%;
-            height: 60px;
-            z-index: 20;
+            height: 100px;
+            z-index: 15;
+            pointer-events: none;
         }
 
-        /* A Pista Laranja */
         .orange-track {
             position: absolute;
-            bottom: 0;
+            bottom: 20px;
             left: 0;
-            height: 15px;
+            height: 12px;
             background: var(--hw-orange);
-            box-shadow: 0 0 20px rgba(255, 128, 0, 0.8);
+            box-shadow: 0 0 15px var(--hw-orange), inset 0 0 5px white;
+            width: 0;
             border-radius: 0 10px 10px 0;
-            width: 0; /* Começa em zero */
             animation: move-track 4s linear infinite;
         }
 
-        /* O Carro */
         .car-runner {
             position: absolute;
-            bottom: 5px;
-            left: -100px;
-            font-size: 50px; /* Tamanho do carro (emoji) */
-            filter: drop-shadow(0 0 10px var(--hw-cyan));
+            bottom: 0;
+            left: -250px;
+            width: 200px; /* Ajuste do tamanho da imagem */
+            z-index: 16;
             animation: move-car 4s linear infinite;
-            z-index: 21;
-            white-space: nowrap;
         }
 
-        /* --- CARTÃO PRINCIPAL --- */
-        .cartao-hw {
-            position: relative;
-            z-index: 50;
-            background: rgba(0, 20, 40, 0.7);
-            backdrop-filter: blur(15px);
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid var(--hw-blue);
-            box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
-            transform: skewX(-4deg);
+        .car-runner img {
+            width: 100%;
+            height: auto;
+            /* Filtro opcional para dar brilho */
+            filter: drop-shadow(0 0 10px var(--hw-cyan));
         }
 
-        h1 {
-            font-size: 4rem;
-            font-style: italic;
-            font-weight: 900;
-            background: linear-gradient(to bottom, #fff, var(--hw-cyan), var(--hw-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-        }
-
-        /* --- ANIMAÇÕES --- */
+        /* Animações Sincronizadas */
         @keyframes move-car {
-            0% { left: -100px; }
+            0% { left: -250px; }
             100% { left: 110%; }
         }
 
@@ -99,60 +83,23 @@
             100% { width: 110%; }
         }
 
-        /* Faíscas de fundo */
+        /* --- Resto do código original --- */
+        #glitter-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
         .sparkle {
             position: absolute;
-            background: var(--hw-cyan);
-            width: 2px;
-            height: 20px;
-            opacity: 0.5;
-            animation: drift linear infinite;
+            background: linear-gradient(to bottom, var(--hw-cyan), var(--hw-blue));
+            border-radius: 1px;
+            filter: blur(0.5px);
+            box-shadow: 0 0 10px var(--hw-blue);
+            animation: nitro-drift linear infinite;
         }
 
-        @keyframes drift {
-            from { transform: translateY(100vh); }
-            to { transform: translateY(-10vh); }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="particles"></div>
-
-    <div class="cartao-hw">
-        <h1>HOT WHEELS</h1>
-        <p style="font-style: italic; color: var(--hw-cyan); margin-top: 10px;">Acelere para a diversão.</p>
-    </div>
-
-<div class="btn-group">
-            <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="btn-hw">shop</a>
-        </div>
-
-    <div class="race-track-area">
-        <div class="orange-track"></div>
-        <div class="car-runner">🏎️</div>
-    </div>
-
-    <script>
-        const container = document.getElementById('glitter-container');
-        const count = 40;
-
-        for (let i = 0; i < count; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-           
-            const width = Math.random() * 2 + 1 + 'px';
-            const height = Math.random() * 15 + 10 + 'px';
-            sparkle.style.width = width;
-            sparkle.style.height = height;
-           
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.top = '100vh';
-           
-            sparkle.style.animationDuration = Math.random() * 1 + 0.5 + 's';
-            sparkle.style.animationDelay = Math.random() * 4 + 's';
-
-              container.appendChild(sparkle);
-        }
-    </script>
-</body>
+        .cartao-hw {
+            position: relative;
+            z-index: 10;
