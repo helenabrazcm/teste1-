@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* --- Estilos da Pista e do Carro --- */
+        /* --- Estilos da Pista e do Carro (Invertidos) --- */
         .race-track-area {
             position: absolute;
             bottom: 5%; 
@@ -46,34 +46,37 @@
         .orange-track {
             position: absolute;
             bottom: 40px;
-            left: 0;
+            right: 0; /* Alinhado à direita agora */
             height: 18px;
             background: var(--hw-orange);
             box-shadow: 0 0 20px var(--hw-orange), inset 0 0 8px white;
             width: 0;
-            border-radius: 0 10px 10px 0;
-            animation: move-track 4s linear infinite;
+            border-radius: 10px 0 0 10px; /* Arredondamento invertido */
+            animation: move-track-left 4s linear infinite;
         }
 
         .car-runner {
             position: absolute;
-            bottom: 35px; /* Ajustado para o emoji ficar sobre a pista */
-            left: -150px;
-            font-size: 80px; /* Tamanho do emoji */
+            bottom: 35px;
+            right: -150px;
+            font-size: 80px;
             z-index: 16;
             filter: drop-shadow(0 0 15px var(--hw-cyan));
-            animation: move-car 4s linear infinite;
+            /* Inverte o emoji horizontalmente */
+            transform: scaleX(-1); 
+            animation: move-car-left 4s linear infinite;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        @keyframes move-car {
-            0% { left: -150px; }
-            100% { left: 110%; }
+        /* Animação para a esquerda */
+        @keyframes move-car-left {
+            0% { right: -150px; }
+            100% { right: 110%; }
         }
 
-        @keyframes move-track {
+        @keyframes move-track-left {
             0% { width: 0; }
             100% { width: 110%; }
         }
@@ -175,7 +178,8 @@
     <div class="race-track-area">
         <div class="orange-track"></div>
         <div class="car-runner">
-            🏎️ </div>
+            🏎️
+        </div>
     </div>
 
     <script>
