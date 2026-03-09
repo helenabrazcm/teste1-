@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* --- Estilos da Pista e do Carro (Direita para Esquerda) --- */
+        /* --- Estilos da Pista e do Carro (Esquerda para Direita) --- */
         .race-track-area {
             position: absolute;
             bottom: 5%; 
@@ -46,35 +46,35 @@
         .orange-track {
             position: absolute;
             bottom: 40px;
-            right: 0; 
+            left: 0; /* Começa na esquerda */
             height: 16px;
             background: var(--hw-orange);
             box-shadow: 0 0 20px var(--hw-orange), inset 0 0 8px white;
             width: 0;
-            border-radius: 10px 0 0 10px;
-            animation: move-track-left 4s linear infinite;
+            border-radius: 0 10px 10px 0;
+            animation: move-track-right 4s linear infinite;
         }
 
         .car-runner {
             position: absolute;
             bottom: 38px;
-            right: -100px;
-            font-size: 60px; /* Tamanho reduzido */
+            left: -100px; /* Nasce na esquerda */
+            font-size: 60px; 
             z-index: 16;
             filter: drop-shadow(0 0 12px var(--hw-cyan));
-            transform: scaleX(-1); /* Espelha o emoji para apontar para a esquerda */
-            animation: move-car-left 4s linear infinite;
+            /* O emoji original 🏎️ já aponta para a direita */
+            animation: move-car-right 4s linear infinite;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        @keyframes move-car-left {
-            0% { right: -100px; }
-            100% { right: 115%; }
+        @keyframes move-car-right {
+            0% { left: -100px; }
+            100% { left: 115%; }
         }
 
-        @keyframes move-track-left {
+        @keyframes move-track-right {
             0% { width: 0; }
             100% { width: 115%; }
         }
