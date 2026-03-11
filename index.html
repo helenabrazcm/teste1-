@@ -6,10 +6,11 @@
     <title>Hot Wheels - iOS Yellow Edition</title>
     <style>
         :root {
-            --hw-yellow: #fff460; /* Tom de amarelo vibrante estilo iOS/Gold */
+            --hw-yellow: #fff460; 
             --hw-blue: #007bff;
             --hw-orange: #ff8000;
-            --white: #ff0000;
+            --white: #ffffff; /* Corrigido para branco */
+            --hw-red: #e62020;
         }
 
         * {
@@ -24,8 +25,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -33,6 +33,7 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
+            cursor: pointer; /* Indica que a tela é clicável */
         }
 
         /* --- Pista e Carro --- */
@@ -78,7 +79,7 @@
             85%, 100% { width: 115%; }
         }
 
-        /* --- Card com o Amarelo Solicitado --- */
+        /* --- Card --- */
         .cartao-hw {
             position: relative;
             z-index: 10;
@@ -91,7 +92,6 @@
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             max-width: 500px;
             width: 90%;
-            margin-top: -50px;
             transform: skewX(-2deg);
         }
 
@@ -100,36 +100,32 @@
             font-weight: 900;
             font-style: italic;
             text-transform: uppercase;
-            color: var(--white);
+            color: var(--hw-red);
             letter-spacing: -2px;
             margin-bottom: 10px;
-            /* Sombra projetada para destacar o branco no amarelo vibrante */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2), -1px -1px 0 rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 0px var(--white);
         }
 
         p {
-            color: var(--white);
+            color: #333;
             font-size: 1.2rem;
             margin-bottom: 30px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
-        /* --- Logo Botão --- */
         .logo-link {
             display: inline-block;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(255, 255, 255, 0.3);
+            background: white;
             padding: 15px;
             border-radius: 20px;
-            box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .logo-link:hover {
             transform: scale(1.1) rotate(-3deg);
-            background: rgba(255, 255, 255, 0.5);
         }
 
         .hw-symbol {
@@ -137,13 +133,25 @@
             height: auto;
         }
 
+        /* Instrução visual para o som */
+        .sound-tip {
+            position: absolute;
+            top: 20px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
 
+    <div class="sound-tip">Clique em qualquer lugar para ouvir o som! 🏎️</div>
+
     <div class="cartao-hw">
         <h1>HOT WHEELS</h1>
-        <p>Acelere para a diversão.</p>
+        <p>VAI ENCARAR?</p>
         <div class="btn-group">
             <a href="https://shop.mattel.com/pages/hot-wheels" target="_blank" class="logo-link">
                 <img src="https://images.mattel.net/image/upload/w_360,f_auto,c_scale/shop-contentstack/blte066167e3d00f7ef/61f313e0031a18274b668cd8/Hot_Wheels_Logo154x68.png" alt="Hot Wheels" class="hw-symbol">
@@ -156,34 +164,18 @@
         <div class="car-runner">🏎️</div>
     </div>
 
-<audio id="hw-theme" loop>
-    <source src="https://www.myinstants.com/media/sounds/hot-wheels-leading-the-way.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-</audio>
+    <audio id="hw-audio" loop>
+        <source src="https://www.myinstants.com/media/sounds/hot-wheels-beat-that-hot-wheels.mp3" type="audio/mpeg">
+    </audio>
 
-<button class="audio-control" onclick="toggleAudio()" id="audio-btn">🔇</button>
-
-<script>
-    const audio = document.getElementById('hw-theme');
-    const btn = document.getElementById('audio-btn');
-
-    function toggleAudio() {
-        if (audio.paused) {
+    <script>
+        // Função para tocar o som no primeiro clique
+        document.body.addEventListener('click', function() {
+            var audio = document.getElementById('hw-audio');
             audio.play();
-            btn.innerHTML = "🔊";
-        } else {
-            audio.pause();
-            btn.innerHTML = "🔇";
-        }
-    }
-
-    // Tenta tocar automaticamente ao primeiro clique na página (contorna bloqueio de browsers)
-    document.body.addEventListener('click', function() {
-        if (audio.paused) {
-            // audio.play(); // Descomente esta linha se quiser que toque ao clicar em qualquer lugar
-        }
-    }, { once: true });
-</script>
+            document.querySelector('.sound-tip').style.display = 'none';
+        }, { once: true }); // Executa apenas uma vez
+    </script>
 
 </body>
 </html>
