@@ -9,7 +9,7 @@
             --hw-yellow: #fff01c; 
             --hw-blue: #007bff;
             --hw-orange: #ff8000;
-            --white: #ffffff; /* Corrigido para branco */
+            --white: #ffffff;
             --hw-red: #ff0000;
         }
 
@@ -33,10 +33,10 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
-            cursor: pointer; /* Indica que a tela é clicável */
+            cursor: pointer;
         }
 
-        /* --- Pista e Carro --- */
+        /* --- Elementos Visuais --- */
         .race-track-area {
             position: absolute;
             bottom: 5%; 
@@ -79,7 +79,6 @@
             85%, 100% { width: 115%; }
         }
 
-        /* --- Card --- */
         .cartao-hw {
             position: relative;
             z-index: 10;
@@ -128,26 +127,34 @@
             transform: scale(1.1) rotate(-3deg);
         }
 
-        .hw-symbol {
-            width: 180px;
-            height: auto;
-        }
+        .hw-symbol { width: 180px; height: auto; }
 
-        /* Instrução visual para o som */
         .sound-tip {
             position: absolute;
             top: 20px;
             color: white;
             background: rgba(0,0,0,0.5);
-            padding: 5px 15px;
+            padding: 8px 20px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+
+        /* Esconde o player do YouTube */
+        #youtube-player {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="sound-tip">Clique em qualquer lugar para ouvir o som! 🏎️</div>
+    <div class="sound-tip">Clique na tela para acelerar o som! 🏎️💨</div>
+
+    <div id="youtube-player"></div>
 
     <div class="cartao-hw">
         <h1>HOT WHEELS</h1>
@@ -164,17 +171,37 @@
         <div class="car-runner">🏎️</div>
     </div>
 
-    <audio id="hw-audio" loop>
-        <source src="https://www.myinstants.com/media/sounds/hot-wheels-beat-that-hot-wheels.mp3" type="audio/mpeg">
-    </audio>
-
     <script>
-        // Função para tocar o som no primeiro clique
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById('hw-audio');
-            audio.play();
-            document.querySelector('.sound-tip').style.display = 'none';
-        }, { once: true }); // Executa apenas uma vez
+        // 1. Carrega a API do YouTube de forma assíncrona
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '0',
+                width: '0',
+                videoId: 'ltX-1kRzOYw', // ID do vídeo solicitado
+                playerVars: {
+                    'autoplay': 0,
+                    'loop': 1,
+                    'playlist': 'ltX-1kRzOYw' // Necessário para o loop funcionar
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // O player está pronto, mas aguarda o clique inicial do usuário
+            document.body.addEventListener('click', function() {
+                player.playVideo();
+                document.querySelector('.sound-tip').style.display = 'none';
+            }, { once: true });
+        }
     </script>
 
 </body>
